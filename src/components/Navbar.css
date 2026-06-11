@@ -1,0 +1,61 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: env(safe-area-inset-bottom);
+  z-index: 100;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.nav-item {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.nav-icon {
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.nav-item.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.nav-item.active .nav-icon {
+  transform: translateY(-2px) scale(1.08);
+}
+
+/* Tab indicator bar */
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 36px;
+  height: 4px;
+  background-color: var(--primary);
+  border-radius: 0 0 4px 4px;
+}
+
+.nav-item:active .nav-icon {
+  transform: scale(0.9);
+}
