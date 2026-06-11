@@ -112,11 +112,25 @@ export const mockSurveys = [
         priorityCost: "3",
         priorityEaseOfUse: "5"
       },
-      section16: {
+            section16: {
         slowsBedsideCare: "Manual double-charting on paper after performing checks, and running to central pharmacy for missing doses.",
         medicineHandlingChallenge: "Lack of barcode matching at bedside leads to near-miss events and delay in initial administration.",
         maxImpactImprovement: "A mobile bedside workstation with an integrated laptop, scanner, and secure medicine lockers.",
         idealCartInclude: "Secure drawers synced with EMR, barcode scanner, long-life hot-swappable battery, and diagnostic mount options."
+      },
+      section17: {
+        outletDistance: "1–3 meters",
+        socketsAvailable: "2",
+        socketsOccupied: "Yes",
+        upsPower: "No",
+        powerInterruptions: "3",
+        desiredBackup: "8 hrs",
+        wifiAvailable: "Partial coverage",
+        signalBedside: "Moderate",
+        deadZones: ["Basement", "Radiology"],
+        wallsAffectConnectivity: "Occasionally",
+        networkInterruptionsCare: "Weekly",
+        mobileCoverage: "Good"
       }
     },
     images: {
@@ -241,11 +255,25 @@ export const mockSurveys = [
         priorityCost: "4",
         priorityEaseOfUse: "4"
       },
-      section16: {
+            section16: {
         slowsBedsideCare: "Searching for pediatric-specific supplies and waiting for IV pump availability.",
         medicineHandlingChallenge: "Manual calculations of pediatric doses on scrap paper before preparation.",
         maxImpactImprovement: "A specialized pediatric smart-cart with built-in dose calculator tools.",
         idealCartInclude: "Secure drawers, child-friendly theme, and integrated scale/calculator platform."
+      },
+      section17: {
+        outletDistance: "Within 1 meter",
+        socketsAvailable: "4",
+        socketsOccupied: "No",
+        upsPower: "Yes",
+        powerInterruptions: "0",
+        desiredBackup: "Full shift",
+        wifiAvailable: "Entire hospital",
+        signalBedside: "Strong",
+        deadZones: ["None"],
+        wallsAffectConnectivity: "Rarely",
+        networkInterruptionsCare: "Never",
+        mobileCoverage: "Excellent"
       }
     },
     images: {

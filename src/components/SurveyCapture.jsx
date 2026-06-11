@@ -116,6 +116,20 @@ const INITIAL_FORM_STATE = {
     medicineHandlingChallenge: '',
     maxImpactImprovement: '',
     idealCartInclude: ''
+  },
+  section17: {
+    outletDistance: '',
+    socketsAvailable: '',
+    socketsOccupied: '',
+    upsPower: '',
+    powerInterruptions: '',
+    desiredBackup: '',
+    wifiAvailable: '',
+    signalBedside: '',
+    deadZones: [],
+    wallsAffectConnectivity: '',
+    networkInterruptionsCare: '',
+    mobileCoverage: ''
   }
 };
 
@@ -165,12 +179,12 @@ export default function SurveyCapture({ onSubmit }) {
 
   // Calculate overall progress percentage
   useEffect(() => {
-    let totalSections = 17; // General Info + 16 sections
+    let totalSections = 18; // General Info + 16 sections
     let completedCount = 0;
 
     if (formData.facilityName && formData.location) completedCount += 1;
 
-    for (let i = 1; i <= 16; i++) {
+    for (let i = 1; i <= 17; i++) {
       const status = getSectionStatus(i);
       if (status === 'complete') completedCount += 1;
       else if (status === 'partial') completedCount += 0.5;
@@ -1365,6 +1379,147 @@ export default function SurveyCapture({ onSubmit }) {
 
             <MediaUpload sectionIndex={16} images={images} onImageChange={handleImageChange} onRemove={removeImage} />
           </div>
+        </div>
+
+        {/* SECTION 17 */}
+        <div className={`form-accordion-item ${activeSection === 17 ? 'open' : ''}`}>
+          <div className="accordion-header" onClick={() => toggleSection(17)}>
+            <div className="header-label">
+              <span className={`status-dot ${getSectionStatus(17)}`}></span>
+              <h3>Sec 17: Accessibility & Infrastructure</h3>
+            </div>
+            <svg className="chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </div>
+
+          {activeSection === 17 && (
+          <div className="accordion-content">
+            <div className="sub-section-title">Power Availability</div>
+            
+            <div className="input-group">
+              <label>Nearest power outlet from bed</label>
+              <select value={formData.section17.outletDistance} onChange={(e) => handleInputChange('section17', 'outletDistance', e.target.value)}>
+                <option value="">Select distance</option>
+                <option value="Within 1 meter">Within 1 meter</option>
+                <option value="1–3 meters">1–3 meters</option>
+                <option value="> 3 meters">&gt; 3 meters</option>
+              </select>
+            </div>
+
+            <div className="grid-2 mt-2">
+              <div className="input-group">
+                <label>Sockets near bed (Qty)</label>
+                <input type="number" value={formData.section17.socketsAvailable} onChange={(e) => handleInputChange('section17', 'socketsAvailable', e.target.value)} placeholder="Qty" />
+              </div>
+              <div className="input-group">
+                <label>Sockets typically occupied?</label>
+                <select value={formData.section17.socketsOccupied} onChange={(e) => handleInputChange('section17', 'socketsOccupied', e.target.value)}>
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="grid-2 mt-2">
+              <div className="input-group">
+                <label>UPS-backed power?</label>
+                <select value={formData.section17.upsPower} onChange={(e) => handleInputChange('section17', 'upsPower', e.target.value)}>
+                  <option value="">Select</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div className="input-group">
+                <label>Power outages/month</label>
+                <input type="number" value={formData.section17.powerInterruptions} onChange={(e) => handleInputChange('section17', 'powerInterruptions', e.target.value)} placeholder="Count" />
+              </div>
+            </div>
+
+            <div className="input-group mt-2">
+              <label>Desired cart battery backup</label>
+              <select value={formData.section17.desiredBackup} onChange={(e) => handleInputChange('section17', 'desiredBackup', e.target.value)}>
+                <option value="">Select backup duration</option>
+                <option value="4 hrs">4 hrs</option>
+                <option value="8 hrs">8 hrs</option>
+                <option value="12 hrs">12 hrs</option>
+                <option value="Full shift">Full shift</option>
+              </select>
+            </div>
+
+            <div className="sub-section-title mt-4">Network & Connectivity Assessment</div>
+
+            <div className="input-group">
+              <label>Hospital Wi-Fi available?</label>
+              <select value={formData.section17.wifiAvailable} onChange={(e) => handleInputChange('section17', 'wifiAvailable', e.target.value)}>
+                <option value="">Select coverage</option>
+                <option value="Entire hospital">Entire hospital</option>
+                <option value="Partial coverage">Partial coverage</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+            <div className="grid-2 mt-2">
+              <div className="input-group">
+                <label>Bedside Signal Strength</label>
+                <select value={formData.section17.signalBedside} onChange={(e) => handleInputChange('section17', 'signalBedside', e.target.value)}>
+                  <option value="">Select strength</option>
+                  <option value="Strong">Strong</option>
+                  <option value="Moderate">Moderate</option>
+                  <option value="Weak">Weak</option>
+                </select>
+              </div>
+              <div className="input-group">
+                <label>Do thick walls affect Wi-Fi?</label>
+                <select value={formData.section17.wallsAffectConnectivity} onChange={(e) => handleInputChange('section17', 'wallsAffectConnectivity', e.target.value)}>
+                  <option value="">Select</option>
+                  <option value="Frequently">Frequently</option>
+                  <option value="Occasionally">Occasionally</option>
+                  <option value="Rarely">Rarely</option>
+                </select>
+              </div>
+            </div>
+
+            <p className="section-desc mt-4">Known dead zones</p>
+            <div className="checkbox-grid">
+              {['ICU', 'Emergency', 'Basement', 'Radiology', 'Isolation rooms', 'None'].map(zone => (
+                <label key={zone} className="checkbox-item">
+                  <input 
+                    type="checkbox"
+                    checked={formData.section17.deadZones.includes(zone)}
+                    onChange={(e) => handleCheckboxChange('section17', 'deadZones', zone, e.target.checked)}
+                  />
+                  <span>{zone}</span>
+                </label>
+              ))}
+            </div>
+
+            <div className="grid-2 mt-2">
+              <div className="input-group">
+                <label>Connectivity outages limit care?</label>
+                <select value={formData.section17.networkInterruptionsCare} onChange={(e) => handleInputChange('section17', 'networkInterruptionsCare', e.target.value)}>
+                  <option value="">Select frequency</option>
+                  <option value="Daily">Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Rare">Rare</option>
+                  <option value="Never">Never</option>
+                </select>
+              </div>
+              <div className="input-group">
+                <label>Mobile data (4G/5G) signal</label>
+                <select value={formData.section17.mobileCoverage} onChange={(e) => handleInputChange('section17', 'mobileCoverage', e.target.value)}>
+                  <option value="">Select signal</option>
+                  <option value="Excellent">Excellent</option>
+                  <option value="Good">Good</option>
+                  <option value="Poor">Poor</option>
+                </select>
+              </div>
+            </div>
+
+            <MediaUpload sectionIndex={17} images={images} onImageChange={handleImageChange} onRemove={removeImage} />
+          </div>
+          )}
         </div>
 
         {/* CONTROL ACTIONS FOR FORM */}

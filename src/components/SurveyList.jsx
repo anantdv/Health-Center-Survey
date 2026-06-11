@@ -322,6 +322,31 @@ export default function SurveyList({ surveys, onLogout }) {
                   <p>{selectedSurvey.sections.section16?.idealCartInclude || 'No feedback provided.'}</p>
                 </div>
               </div>
+
+              {/* Section 17 */}
+              <div className="detail-section">
+                <h4>Section 17: Bedside Accessibility & Infrastructure Readiness</h4>
+                <div className="grid-2">
+                  <div><strong>Outlet from Bed:</strong> {selectedSurvey.sections.section17?.outletDistance || '-'}</div>
+                  <div><strong>Sockets near Bed:</strong> {selectedSurvey.sections.section17?.socketsAvailable || '-'}</div>
+                  <div><strong>Sockets Occupied:</strong> {selectedSurvey.sections.section17?.socketsOccupied || '-'}</div>
+                  <div><strong>UPS Power:</strong> {selectedSurvey.sections.section17?.upsPower || '-'}</div>
+                  <div><strong>Outages/Month:</strong> {selectedSurvey.sections.section17?.powerInterruptions || '-'}</div>
+                  <div><strong>Desired Cart Battery:</strong> {selectedSurvey.sections.section17?.desiredBackup || '-'}</div>
+                </div>
+                <div className="mt-2" style={{ borderTop: '1px dashed var(--border-color)', paddingTop: '8px' }}>
+                  <strong>Wi-Fi Status:</strong> {selectedSurvey.sections.section17?.wifiAvailable || '-'} | <strong>Signal:</strong> {selectedSurvey.sections.section17?.signalBedside || '-'}
+                </div>
+                <div className="mt-1">
+                  <strong>Walls Limit Link:</strong> {selectedSurvey.sections.section17?.wallsAffectConnectivity || '-'} | <strong>Outages Affect Care:</strong> {selectedSurvey.sections.section17?.networkInterruptionsCare || '-'}
+                </div>
+                <div className="mt-1">
+                  <strong>Known Dead Zones:</strong> {selectedSurvey.sections.section17?.deadZones?.join(', ') || 'None'}
+                </div>
+                <div className="mt-1">
+                  <strong>Mobile Coverage:</strong> {selectedSurvey.sections.section17?.mobileCoverage || '-'}
+                </div>
+              </div>
             </div>
           </div>
         </div>
