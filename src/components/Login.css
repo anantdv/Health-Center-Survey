@@ -27,11 +27,12 @@
 }
 
 .login-logo {
-  height: 140px;
-  width: auto;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
   object-fit: contain;
   margin-bottom: 16px;
-  filter: drop-shadow(0 4px 6px rgba(0, 31, 151, 0.15));
+  filter: drop-shadow(0 4px 6px rgba(0, 31, 151, 0.1));
 }
 
 .login-title {
