@@ -30,7 +30,7 @@ export default function SurveyList({ surveys, onLogout }) {
     <div className="list-container fade-in">
       <header className="page-header">
         <div className="header-brand">
-          <img src="/logo.png" alt="Logo" className="header-logo" onError={(e) => e.target.style.display = 'none'} />
+          <img src="/logo.jpeg" alt="Logo" className="header-logo" onError={(e) => e.target.style.display = 'none'} />
           <div>
             <h1>Dashboard</h1>
             <p>Completed Health Center Audits</p>

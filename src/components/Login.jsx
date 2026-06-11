@@ -33,7 +33,7 @@ export default function Login({ onLogin }) {
     <div className="login-container">
       <div className="login-card glass-panel fade-in">
         <div className="login-header">
-          <img src="/logo.png" alt="Hospital Logo" className="login-logo" onError={(e) => e.target.style.display = 'none'} />
+          <img src="/logo.jpeg" alt="Hospital Logo" className="login-logo" onError={(e) => e.target.style.display = 'none'} />
           <h1 className="login-title">Health Survey Hub</h1>
           <p className="login-subtitle">Hospital & Health Center Assessment Portal</p>
         </div>
