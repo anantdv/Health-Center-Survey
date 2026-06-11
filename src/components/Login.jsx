@@ -20,7 +20,7 @@ export default function Login({ onLogin }) {
     
     // Simulate API request
     setTimeout(() => {
-      if (username.toLowerCase() === 'admin' && password === 'password123') {
+      if (username.toLowerCase() === 'admin' && password === 'P@ssw0rd2026') {
         onLogin({ username: 'Administrator', role: 'Auditor' });
       } else {
         setError('Invalid clinical ID or password.');
